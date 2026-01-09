@@ -3,58 +3,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dev Portfolio | Python & Systems</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Andrew Stevenson | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #030712;
+            --accent-color: #3b82f6;
+            --terminal-bg: #0f172a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .mono { font-family: 'Fira Code', monospace; }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .terminal-window {
+            background-color: var(--terminal-bg);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid #334155;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background-color: var(--accent-color);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            filter: blur(40px);
+        }
+    </style>
 </head>
-<body>
-    <nav>
-        <div class="logo">./dev_name</div>
-        <div class="links">
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="mailto:your@email.com" class="cta">Contact</a>
+<body class="overflow-x-hidden">
+
+    <div class="blob top-[-100px] left-[-100px]"></div>
+    <div class="blob bottom-[-100px] right-[-100px]"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass px-6 py-4 flex justify-between items-center">
+        <div class="mono text-blue-400 font-bold text-xl">./andrew_stevenson</div>
+        <div class="hidden md:flex gap-8 text-sm font-medium">
+            <a href="#about" class="hover:text-blue-400 transition">About</a>
+            <a href="#terminal" class="hover:text-blue-400 transition">Terminal</a>
+            <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
+            <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
         </div>
+        <a href="mailto:hello@example.com" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-semibold transition">Hire Me</a>
     </nav>
 
-    <header>
-        <div class="hero">
-            <h1>Building at the intersection of <span class="highlight">High-Level Logic</span> and <span class="highlight">Low-Level Power.</span></h1>
-            <p>Specializing in Python Web Development and C/C++ Systems Programming.</p>
+    <!-- Hero Section -->
+    <header class="pt-40 pb-20 px-6 max-w-6xl mx-auto text-center md:text-left">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+            Architecting <span class="gradient-text">Efficiency</span> <br>
+            from Core to Web.
+        </h1>
+        <p class="text-gray-400 text-xl max-w-2xl mb-10 leading-relaxed">
+            I'm <span class="text-white font-semibold">Andrew Stevenson</span>. I bridge the gap between high-level web scalability and low-level performance optimization.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+            <a href="#about" class="bg-white text-black px-8 py-3 rounded-lg font-bold hover:bg-gray-200 transition">Read Bio</a>
+            <a href="#projects" class="border border-gray-700 px-8 py-3 rounded-lg font-bold hover:bg-white/5 transition">View Projects</a>
         </div>
     </header>
 
-    <section id="projects">
-        <h2>Selected Works</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="terminal-header"><span></span><span></span><span></span></div>
-                <h3>C++ Image Engine</h3>
-                <p>A high-performance CLI tool for bitmap manipulation using custom C++ algorithms, exposed via a Python API.</p>
-                <div class="tags"><span>C++</span><span>Python</span><span>SWIG</span></div>
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="glass p-8 rounded-3xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <i data-lucide="user" size="120"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="info" class="text-blue-500"></i> The Developer
+                </h2>
+                <div class="space-y-4 text-gray-300 leading-relaxed">
+                    <p>
+                        Hey, I'm <span class="text-white font-bold">Andrew Stevenson</span>. I'm 15 years old and have been obsessed with how software works since I was 10. What started as curiosity has grown into a deep passion for building high-performance systems.
+                    </p>
+                    <p>
+                        I don't just write code; I build smarter. By integrating <span class="text-blue-400 font-semibold">AI into my workflow</span>, I've managed to 10x my output, allowing me to focus on complex architectural problems while staying incredibly productive.
+                    </p>
+                    <div class="flex gap-4 pt-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-white">5+</div>
+                            <div class="text-xs text-gray-500 uppercase">Years Experience</div>
+                        </div>
+                        <div class="w-px h-10 bg-gray-800"></div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-white">10x</div>
+                            <div class="text-xs text-gray-500 uppercase">AI Workflow</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="project-card">
-                <div class="terminal-header"><span></span><span></span><span></span></div>
-                <h3>Distributed Task Queue</h3>
-                <p>A full-stack Python application using FastAPI and Redis to manage asynchronous heavy-lifting tasks.</p>
-                <div class="tags"><span>FastAPI</span><span>Redis</span><span>Docker</span></div>
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold italic text-gray-400">"The best way to predict the future is to build it."</h3>
+                <p class="text-gray-500">
+                    I focus on the intersection of Python automation and C++ performance. Whether it's tracking prices across the web or building low-level engines, I prioritize clean, efficient, and scalable code.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass p-4 rounded-xl flex items-center gap-3">
+                        <i data-lucide="zap" class="text-yellow-500"></i>
+                        <span class="text-sm font-medium">Fast Execution</span>
+                    </div>
+                    <div class="glass p-4 rounded-xl flex items-center gap-3">
+                        <i data-lucide="brain" class="text-purple-500"></i>
+                        <span class="text-sm font-medium">AI-Enhanced</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <div class="skills-container">
-            <div class="skill-group">
-                <h4>Back-End</h4>
-                <p>Python (Django, FastAPI), SQL, REST APIs</p>
+    <!-- Terminal Section -->
+    <section id="terminal" class="py-20 px-6 max-w-4xl mx-auto">
+        <div class="mb-8 text-center">
+            <h2 class="text-2xl font-bold mb-2">Interactive System Explorer</h2>
+            <p class="text-gray-500">Type 'help' to begin or click the window</p>
+        </div>
+        
+        <div class="terminal-window rounded-xl overflow-hidden" onclick="document.getElementById('terminal-input').focus()">
+            <div class="bg-slate-800 px-4 py-2 flex items-center gap-2 border-b border-slate-700">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                <span class="text-xs text-slate-400 ml-4 mono italic">bash — 80x24</span>
             </div>
-            <div class="skill-group">
-                <h4>Systems</h4>
-                <p>C, C++, Memory Management, Multithreading</p>
+            <div id="terminal-content" class="p-6 h-[400px] overflow-y-auto mono text-sm leading-relaxed text-blue-100">
+                <div class="mb-4 text-blue-400">Welcome to Andrew's Portfolio OS v2.4.0 (LTS)</div>
+                <div class="mb-2">* Documentation: Type 'help' to see available commands</div>
+                <div class="mb-2 text-yellow-500">System status: Optimizing via AI 10x Protocols...</div>
+                <div id="command-history"></div>
+                <div class="flex">
+                    <span class="text-green-400 mr-2">andrew@portfolio:~$</span>
+                    <input type="text" id="terminal-input" class="bg-transparent border-none outline-none flex-1 text-white" autofocus spellcheck="false">
+                </div>
             </div>
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <!-- Projects Grid -->
+    <section id="projects" class="py-20 px-6 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 flex items-center gap-3">
+            <i data-lucide="code-2" class="text-blue-500"></i> Featured Deployments
+        </h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1: Price Tracker -->
+            <div class="glass p-8 rounded-2xl group hover:border-blue-500/50 transition duration-500 flex flex-col">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="bg-blue-500/10 p-3 rounded-lg">
+                        <i data-lucide="trending-down" class="text-blue-500"></i>
+                    </div>
+                    <div class="flex gap-4 text-gray-500">
+                        <a href="https://github.com/AndrewStevenson550/Price-Tracker" target="_blank"><i data-lucide="github" class="hover:text-white cursor-pointer"></i></a>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Price Tracker</h3>
+                <p class="text-gray-400 mb-6 flex-grow">A robust Python application that monitors product prices using BeautifulSoup. Features a Flask web interface and SQLite3 database for historical tracking.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs font-bold px-3 py-1 bg-slate-800 rounded text-blue-400">Python</span>
+                    <span class="text-xs font-bold px-3 py-1 bg-slate-800 rounded text-blue-400">Flask</span>
+                    <span class="text-xs font-bold px-3 py-1 bg-slate-800 rounded text-blue-400">SQLite3</span>
+                    <span class="text-xs font-bold px-3 py-1 bg-slate-800 rounded text-blue-400">BS4</span>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="glass p-8 rounded-2xl group hover:border-blue-500/50 transition duration-500 flex flex-col">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="bg-purple-500/10 p-3 rounded-lg">
+                        <i data-lucide="cpu" class="text-purple-500"></i>
+                    </div>
+                    <div class="flex gap-4 text-gray-500">
+                        <i data-lucide="github" class="hover:text-white cursor-pointer"></i>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">C++ Graphics Pipeline</h3>
+                <p class="text-gray-400 mb-6 flex-grow">A custom rasterization engine built in C++ from scratch. Demonstrates deep understanding of memory buffers and matrix mathematics.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs font-bold px-3 py-1 bg-slate-800 rounded text-purple-400">C++</span>
+                    <span class="text-xs font-bold px-3 py-1 bg-slate-800 rounded text-purple-400">OpenGL</span>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="glass p-8 rounded-2xl group hover:border-blue-500/50 transition duration-500 flex flex-col">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="bg-green-500/10 p-3 rounded-lg">
+                        <i data-lucide="layers" class="text-green-500"></i>
+                    </div>
+                    <div class="flex gap-4 text-gray-500">
+                        <i data-lucide="github" class="hover:text-white cursor-pointer"></i>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Async Data Engine</h3>
+                <p class="text-gray-400 mb-6 flex-grow">High-concurrency ingestion engine using Playwright and FastAPI. Capable of processing 10k+ requests per minute.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs font-bold px-3 py-1 bg-slate-800 rounded text-green-400">Python</span>
+                    <span class="text-xs font-bold px-3 py-1 bg-slate-800 rounded text-green-400">FastAPI</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white/5">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div>
+                    <h4 class="text-blue-500 font-bold uppercase tracking-widest text-sm mb-6">System Level</h4>
+                    <ul class="space-y-4 mono">
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-blue-500 rounded-full"></div> C / C++ (STL)</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-blue-500 rounded-full"></div> Memory Management</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-blue-500 rounded-full"></div> Multithreading</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-blue-500 rounded-full"></div> x86/64 Assembly</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-green-500 font-bold uppercase tracking-widest text-sm mb-6">Web & Automation</h4>
+                    <ul class="space-y-4 mono">
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-green-500 rounded-full"></div> Python (Flask/FastAPI)</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-green-500 rounded-full"></div> SQLite3 / SQLAlchemy</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-green-500 rounded-full"></div> BeautifulSoup4 (Scraping)</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-green-500 rounded-full"></div> Requests & APIs</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-purple-500 font-bold uppercase tracking-widest text-sm mb-6">Environment</h4>
+                    <ul class="space-y-4 mono">
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-purple-500 rounded-full"></div> AI-Driven Workflows</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-purple-500 rounded-full"></div> Linux / Bash</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-purple-500 rounded-full"></div> Git & GitHub</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-purple-500 rounded-full"></div> Docker Containers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center text-gray-500 text-sm">
+        <p class="mono">&copy; 2026 Andrew Stevenson | Compiled with passion</p>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Terminal Logic
+        const terminalInput = document.getElementById('terminal-input');
+        const historyContainer = document.getElementById('command-history');
+        const terminalContent = document.getElementById('terminal-content');
+
+        const commands = {
+            'help': 'Available commands: <span class="text-blue-400">about, projects, skills, contact, clear</span>',
+            'about': 'My name is Andrew Stevenson. I\'m 15 and have been coding since age 10. I leverage AI to 10x my efficiency in Python and C++ development.',
+            'projects': 'Active Projects:<br>1. <span class="text-blue-400">Price Tracker</span> - Python, Flask, SQLite3, BS4<br>2. <span class="text-purple-400">Graphics Engine</span> - C++, OpenGL<br>3. <span class="text-green-400">Scraper Engine</span> - Python, FastAPI',
+            'skills': 'Languages: Python, C, C++, JavaScript<br>Tools: SQLite3, Git, AI-Optimization, Linux, BeautifulSoup',
+            'contact': 'Reach me at: <a href="mailto:hello@example.com" class="underline">hello@example.com</a>',
+            'clear': 'CLEAR_CMD'
+        };
+
+        terminalInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const input = terminalInput.value.toLowerCase().trim();
+                
+                // Add command to history view
+                const cmdLine = document.createElement('div');
+                cmdLine.innerHTML = `<span class="text-green-400">andrew@portfolio:~$</span> <span class="text-white">${input}</span>`;
+                historyContainer.appendChild(cmdLine);
+
+                // Process command
+                if (input === 'clear') {
+                    historyContainer.innerHTML = '';
+                } else if (commands[input]) {
+                    const response = document.createElement('div');
+                    response.className = 'mb-4 mt-1 text-gray-300';
+                    response.innerHTML = commands[input];
+                    historyContainer.appendChild(response);
+                } else if (input !== '') {
+                    const error = document.createElement('div');
+                    error.className = 'mb-4 mt-1 text-red-400';
+                    error.innerHTML = `Command not found: ${input}. Type 'help' for options.`;
+                    historyContainer.appendChild(error);
+                }
+
+                terminalInput.value = '';
+                terminalContent.scrollTop = terminalContent.scrollHeight;
+            }
+        });
+
+        // Simple scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
